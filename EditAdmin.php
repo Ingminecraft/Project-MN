@@ -42,14 +42,14 @@ $row = mysqli_fetch_array($query);
     <tr>
         <td align="right" bgcolor="" width="150px">รหัสผ่าน</td>
         <td align="center" bgcolor=""><input type="password" id="password" name="PASS_Admin" size="25"
-        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
-        title="รหัสต้องมีตัวอักษรอย่างน้อย 8 ตัว ตัวอักษรตัวเล็ก 1, ตัวอักษรตัวใหญ่ 1, และ ตัวอักษรพิเศษ 1 ตัว" required></td>
+        pattern="(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}" 
+        title="รหัสต้องมีตัวอักษรอย่างน้อย 8 ตัว ประกอบไปด้วย A-Z, a-z และ 0-9" required></td>
     </tr>
     <tr>
         <td align="right" bgcolor="" width="150px">ยืนยันรหัสผ่าน</td>
         <td align="center" bgcolor=""><input type="password" id="con_password" name="CON_PASS_Admin" size="25"
-        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
-        title="รหัสต้องมีตัวอักษรอย่างน้อย 8 ตัว ตัวอักษรตัวเล็ก 1, ตัวอักษรตัวใหญ่ 1, และ ตัวอักษรพิเศษ 1 ตัว" required></td></td> 
+        pattern="(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}" 
+        title="รหัสต้องมีตัวอักษรอย่างน้อย 8 ตัว ประกอบไปด้วย A-Z, a-z และ 0-9" required></td></td> 
     </tr>
     <tr>
         <td colspan="2" align="Center"><br><br>
