@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 06, 2022 at 12:25 PM
+-- Generation Time: Sep 08, 2022 at 07:36 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -28,9 +28,11 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `db_admin` (
-  `ID_Admin` varchar(8) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `NAME_Admin` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ID_Admin` int(8) NOT NULL,
+  `FN_Admin` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `LN_Admin` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `PHONE_Admin` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `USERNAME_Admin` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `PASS_Admin` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -38,10 +40,8 @@ CREATE TABLE `db_admin` (
 -- Dumping data for table `db_admin`
 --
 
-INSERT INTO `db_admin` (`ID_Admin`, `NAME_Admin`, `PHONE_Admin`, `PASS_Admin`) VALUES
-('00000001', 'นายแอด มินสิบ', '0982627881', '0818082015aA@'),
-('63410043', 'เชษฐมาส ไผ่จันทร์', '0982627882', '0818082015aA@'),
-('63410077', 'สุธนัย วันมหาชัย', '0622614562', '8Bf,kdvt555+');
+INSERT INTO `db_admin` (`ID_Admin`, `FN_Admin`, `LN_Admin`, `PHONE_Admin`, `USERNAME_Admin`, `PASS_Admin`) VALUES
+(63410043, 'เชษฐมาส', 'ไผ่จันทร์', '0982627881', 'chaumas16@gmail.com', '0818082015aA@');
 
 --
 -- Indexes for dumped tables
@@ -52,6 +52,16 @@ INSERT INTO `db_admin` (`ID_Admin`, `NAME_Admin`, `PHONE_Admin`, `PASS_Admin`) V
 --
 ALTER TABLE `db_admin`
   ADD PRIMARY KEY (`ID_Admin`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `db_admin`
+--
+ALTER TABLE `db_admin`
+  MODIFY `ID_Admin` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63410045;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
