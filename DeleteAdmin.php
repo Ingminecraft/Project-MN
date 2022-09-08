@@ -20,7 +20,11 @@ $row = mysqli_fetch_array($query);
     </tr>
     <tr>
         <td align="right" bgcolor="">ชื่อ-นามสกุล :</td>
-        <td align="Left" bgcolor=""><?php echo $row["NAME_Admin"];?></td>
+        <td align="Left" bgcolor=""><?php echo $row["FN_Admin"]." ".$row["LN_Admin"];?></td>
+    </tr>
+    <tr>
+        <td align="right" bgcolor="">ชื่อผู้ใช้งาน :</td>
+        <td align="Left" bgcolor=""><?php echo $row["USERNAME_Admin"];?></td>
     </tr>
     <tr>
         <td align="right" bgcolor="">ID :</td>

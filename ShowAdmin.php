@@ -19,7 +19,7 @@ $query = mysqli_query($conn,$sql);
         <tr>
             <td>
     <font size ="" color = "white">
-<?php echo $data['ID_Admin'] ." : ".$data['NAME_Admin']?>
+<?php echo $data['ID_Admin'] ." : ".$data['FN_Admin']." ".$data['LN_Admin']?>
 </td><td align="right">
         <a href="./EditAdmin.php?ID_Admin=<?php echo $data['ID_Admin'];?>">
         <button class="btnEdit"><i class="fa fa-edit"></i></button></a><a href="./DeleteAdmin.php?ID_Admin=<?php echo $data['ID_Admin'];?>"><button class="btnDelete"><i class="fa fa-trash"></i></button></a>

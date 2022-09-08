@@ -2,13 +2,17 @@
 <?php include("./Header.php");?>
 <?php include("./Menu.php");?>
 <?php
-$NAME_Admin = $_POST['NAME_Admin'];
+$FN_Admin = $_POST['FN_Admin'];
+$LN_Admin = $_POST['LN_Admin'];
 $ID_Admin = $_POST['ID_Admin'];
 $PHONE_Admin = $_POST['PHONE_Admin'];
+$USERNAME_Admin = $_POST['USERNAME_Admin'];
 $CON_PASS_Admin = $_POST['PASS_Admin'];
 $sql = "UPDATE db_admin SET 
-NAME_Admin = '$NAME_Admin',
+FN_Admin = '$FN_Admin',
+LN_Admin = '$LN_Admin',
 PHONE_Admin = '$PHONE_Admin',
+USERNAME_Admin='$USERNAME_Admin',
 PASS_Admin = '$CON_PASS_Admin'
 WHERE ID_Admin = $ID_Admin";
 ?>
@@ -16,7 +20,7 @@ WHERE ID_Admin = $ID_Admin";
 <?php
 $result=mysqli_query($conn,$sql);
 mysqli_close($conn);
-// echo $sql;
+ //echo $sql;
 if($result){
     echo'<br><br>
     <table align="center"><tr><td>
