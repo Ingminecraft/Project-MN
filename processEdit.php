@@ -29,7 +29,7 @@ if($result){
         </font>
         </td></tr></tr><td align="center">
         <a href="./ShowAdmin.php">
-        <button class="btnOk">ตกลง</button>
+        <meta http-equiv="refresh" content="3; url=./ShowAdmin.php">
         </a>
         </td>
     </tr>
@@ -42,11 +42,12 @@ if($result){
         </font>
         </td></tr></tr><td align="center">
         <a href="./ShowAdmin.php">
-        <button class="btnCancel">ตกลง</button>
+        <meta http-equiv="refresh" content="3; url=./ShowAdmin.php">
         </a>
         </td>
     </tr>
     ';
 }
+//<button class="btnCancel">ตกลง</button>
 ?>
 <?php include("./Footer.php");?>  
