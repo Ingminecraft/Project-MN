@@ -43,6 +43,31 @@
 }   
     .btnEdit:hover {background-color: orange;}
 
+    .btnWhite {
+    border-radius: 10px;
+    background-color: white;
+    border: none;
+    color: Black;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.5s;
+    height: 40px;
+    width: 40px;
+}   
+    .btnWhite:hover {background-color: orange;}
+    
+    .btnWhiteD {
+    border-radius: 10px;
+    background-color: white;
+    border: none;
+    color: Black;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.5s;
+    height: 40px;
+    width: 40px;
+}   
+    .btnWhiteD:hover {background-color: Red;}
     .btnDelete {
     border-radius: 0px 13px 13px 0px;
     background-color: red;
@@ -115,6 +140,36 @@
     padding: 10px; 
     width: 500px;
 }
+.TextButton:link {
+  color: black;
+  text-decoration: ;
+  font-weight: normal;
+}
+.TextButton:visited {
+  color: black;
+  text-decoration: ;
+  font-weight: normal;
+}
+.TextButton:hover {
+  color: orange;
+  font-weight: bold;
+  text-decoration: underline;
+}
+a { text-decoration: none; }
+
+#display-image{
+  width: 400px;
+  height: 225px;
+  border: 1px solid black;
+  background-position: center;
+  background-size: cover;
+  text-align:center;
+  background-image: url("./image/AddPic.png");
+  font-size:0px;
+}
+input[type="file"]::file-selector-button {
+ opacity:0;
+}
 
 body{font-family: Kanit;}
 </style>
@@ -126,15 +181,15 @@ body{font-family: Kanit;}
         </div>
     <td valign="top" bgcolor="">    
         <div class=zoom>
-        <a href="./register.php"><img src="./image/LoginBotton.png" height="70" width="180"></a><br>
+        <a href="./ShowAdmin.php"><img src="./image/LoginBotton.png" height="70" width="180"></a><br>
         </div>
     <td valign="top" bgcolor=""> 
         <div class=zoom>
-        <a href="./profile.php"><img src="./image/LoginBotton.png" height="70" width="180"></a><br>
+        <a href="./Home.php"><img src="./image/LoginBotton.png" height="70" width="180"></a><br>
         </div>
     <td valign="top"  bgcolor=""> 
         <div class=zoom>
-        <a href="./.index.php"><img src="./image/LoginBotton.png" height="70" width="180"></a><br>
+        <a href="./Withdraw.php"><img src="./image/LoginBotton.png" height="70" width="180"></a><br>
         </div>
     <td valign="top" bgcolor=""> 
         <div class=zoom>

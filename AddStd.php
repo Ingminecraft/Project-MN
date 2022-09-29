@@ -1,72 +1,58 @@
 <?php include("./Header.php");?>
 <?php include("./Menu.php");?>
-<?php include("./SessionCheck.php");?>
 <?php include('./connection/connection.php');?>
+<form action="./AddStdProcess.php" method="post">
 <?php 
-$AD_employeeID = $_GET['AD_employeeID'];
-$sql = "SELECT * FROM admin WHERE AD_employeeID=$AD_employeeID";
+$sql = "SELECT DS_studentID FROM dormstudent;";
 $query = mysqli_query($conn,$sql);
-// แยกข้อมูลเป็น ROW
-$row = mysqli_fetch_array($query);
-//print_r($row);
+$data = mysqli_fetch_assoc($query);
+$MAX = $data['DS_studentID']
 ?>
+
 <br><br><br>
-<table id=BoxGray align="center">
-<form action="./processEdit.php" method="post">
-<tr>
+<table align="center">
+    <tr>
         <td align="center" colspan="2">
         <font size ="+20" color = "black" >
-        แก้ไขผู้ดูแลระบบ<br><br>
+        ลงทะเบียนเป็นนิสิตหอพัก<br><br>
         </font>
         </td>
     </tr>
     <tr>
+        <td align="right" bgcolor="" width="210px">รหัสนิสิต <font color="red"></font>
+        <scr id="CheckID"></scr></td>
+        <td align="center" bgcolor=""><input type="text" name="DS_studentID" id="DS_studentID" size="25" maxlength="8" 
+        pattern="([0-9]+)" title="ต้องเป็นตัวเลขเท่านั้น" required></td>
+    </tr>
+    <tr>
         <td align="right" bgcolor="" width="210px">ชื่อจริง<scr id=CheckFristName></scr></td>
-        <td align="center" bgcolor=""><input type="text" name="AD_fname" id="FristName" size="25" maxlength="50" required
-        value=<?php echo $row["AD_fname"];?>></td>
+        <td align="center" bgcolor=""><input type="text" name="DS_fname" id="FristName" size="25" maxlength="50" required></td>
     </tr>
     <tr>
         <td align="right" bgcolor="" width="210px">นามสกุล<scr id=CheckLastName></scr></td>
-        <td align="center" bgcolor=""><input type="text" name="AD_lname" id="LastName" size="25" maxlength="50" required
-        value=<?php echo $row["AD_lname"];?>></td>
-    </tr>
-    <tr>
-        <td align="right" bgcolor="" width="210px">ID <font color="red">(ไม่สามารถแก้ไข)</font>
-        <scr id="CheckID"></scr></td>
-        <td align="center" bgcolor=""><input type="text" name="AD_employeeID" id="AD_employeeID" size="25" maxlength="8" 
-        pattern="([0-9]+)" title="ต้องเป็นตัวเลขเท่านั้น"
-        placeholder="ระบบจะสร้าง ID อัตโนมัตติ" readonly
-        value=<?php echo $row["AD_employeeID"];?>></td>
+        <td align="center" bgcolor=""><input type="text" name="DS_lname" id="LastName" size="25" maxlength="50" required></td>
     </tr>
     <tr>
         <td align="right" bgcolor="" width="210px">เบอร์โทรศัพท์<scr id="CheckPhone"></scr></td>
-        <td align="center" bgcolor=""><input type="text" name="AD_phonenumber" id="AD_phonenumber" size="25" maxlength="10" 
-        pattern="(?=.*[0-9]).{10,}" title="กรุณากรอกเบอร์โทร" required
-        value=<?php echo $row["AD_phonenumber"];?>></td>
+        <td align="center" bgcolor=""><input type="text" name="DS_phonenumber" id="DS_phonenumber" size="25" maxlength="10" 
+        pattern="(?=.*[0-9]).{10,}" title="กรุณากรอกเบอร์โทร"
+        required></td>
     </tr>
     <tr>
         <td align="center" bgcolor="" colspan="2">
             <hr width="350px" color = "gray">
         </td>
-      <tr>
-        <td align="right" bgcolor="" width="210px">ชื่อผู้ใช้งาน<scr id="CheckUsername"></scr></td>
-        <td align="center" bgcolor=""><input type="text" id="Username" name="AD_username" size="25" maxlength="20"
-        title="กรุณากรอกชื่อผู้ใช้งาน" required
-        value=<?php echo $row["AD_username"];?>></td>
-    </tr>
     <tr>
         <td align="right" bgcolor="" width="210px">รหัสผ่าน<scr id="AllCheckPass"></scr></td>
-        <td align="center" bgcolor=""><input type="password" id="password" name="AD_password" size="25"
+        <td align="center" bgcolor=""><input type="password" id="password" name="DS_password" size="25"
         pattern="(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}" 
-        title="รหัสต้องมีตัวอักษรอย่างน้อย 8 ตัว ประกอบไปด้วย A-Z, a-z และ 0-9 " required
-        value=<?php echo $row["AD_password"];?>></td>
+        title="รหัสต้องมีตัวอักษรอย่างน้อย 8 ตัว ประกอบไปด้วย A-Z, a-z และ 0-9 " required></td>
     </tr>
     <tr>
         <td align="right" bgcolor="" width="210px">ยืนยันรหัสผ่าน<scr id="CheckPass"></scr></td>
-        <td align="center" bgcolor=""><input type="password" id="con_password" name="CON_AD_password" size="25"
+        <td align="center" bgcolor=""><input type="password" id="con_password" name="CON_DS_password" size="25"
         pattern="(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}" 
-        title="รหัสต้องมีตัวอักษรอย่างน้อย 8 ตัว ประกอบไปด้วย A-Z, a-z และ 0-9 " required
-        value=<?php echo $row["AD_password"];?>></td></td> 
+        title="รหัสต้องมีตัวอักษรอย่างน้อย 8 ตัว ประกอบไปด้วย A-Z, a-z และ 0-9 " required></td></td> 
     </tr>
     <tr>
         <td align="right" bgcolor="" width="210px"></td>
@@ -88,13 +74,13 @@ $row = mysqli_fetch_array($query);
         <input type="submit" name="submit" value="ยืนยัน">
         </td>
     </tr>
-</form>
     <tr>
         <td colspan="2" align="Center"><a href="./ShowAdmin.php">
         <button class=btnCancel onclick="history.back()">ยกเลิก</button></a>
         </td>
     </tr>
 </table>
+</form>
 
 <script>
   var Character = /[A-z]/g
@@ -119,7 +105,7 @@ function CheckPassword(){
 password.onchange = CheckPassword;
 confirm_password.onkeyup = CheckPassword;
 //เช็คเบอร์โทร
-    var phone = document.getElementById("AD_phonenumber");
+    var phone = document.getElementById("DS_phonenumber");
 function CheckPhone(){ 
   if(phone.value.length < 10 || phone.value.match(OnlyNumbers)) {
     document.getElementById("CheckPhone").innerHTML = "<font color=red> *</font>";
@@ -133,7 +119,7 @@ phone.onchange = CheckPhone;
 phone.onkeyup = CheckPhone;
 
 //เช็คไอดี
-    var AdminID =  document.getElementById("AD_employeeID");
+    var AdminID =  document.getElementById("DS_studentID");
 function CheckID(){ 
   if(AdminID.value.match(OnlyNumbers)) {
     document.getElementById("CheckID").innerHTML = "<font color=red> *</font>";
@@ -141,11 +127,10 @@ function CheckID(){
   } else {
     document.getElementById("CheckID").innerHTML = "";
     document.getElementById("IDLastCheck").innerHTML = "";
-  } 
+  }
 }
 AdminID.onchange = CheckID;
 AdminID.onkeyup = CheckID;
-
 //เช็คชื่อ
 var Frist_Name  =  document.getElementById("FristName");
 function CheckFrist_Name(){ 
@@ -244,5 +229,6 @@ function ShowPass() {
     y.type = "password";
   }
 }
+
 </script>
-<?php include("./Footer.php");?>
+<?php include("./Footer.php");?>    
