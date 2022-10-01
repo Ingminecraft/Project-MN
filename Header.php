@@ -9,15 +9,16 @@ if(isset($_SESSION["User"])){
     if($_SESSION["level"] == "A"){
         $Profile = "<img style='vertical-align:middle' src='./image/AdminProfile.jpg' height='60' width='60'> &nbsp;";
     }elseif($_SESSION["level"] == "M"){
-        $Profile = "<img style='vertical-align:middle' src='./image/MemberProfile.jpg' height='60' width='60'> &nbsp;";
+        $Profile = "<img style='vertical-align:middle' src='./image/MemberProfile.png' height='60' width='60'> &nbsp;";
     }else{$Profile = "";}
 }else{
     $Name = "<a href='./Login.php'><button class='btnOk' style='padding:5px;border-radius:5px;width:120px'>เข้าสู่ระบบ</button></a>";
     $Logout = "<a href='./AddStd.php'><button class='btnOk' style='padding:5px;border-radius:5px;width:120px'>ลงทะเบียน</button></a>";
     $Profile = "";
 }
+date_default_timezone_set('Asia/Bangkok');
 ?>
-    <head><title>Cheattamas Website</title></head>
+    <head><title>Dormitory deposit system</title></head>
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Kanit">
         <style>
@@ -41,9 +42,9 @@ if(isset($_SESSION["User"])){
 <body>
     <table align="center" cellpadding="1"  hegiht="100%" width="700" >
         <tr>
-            <td valign="top" colspan="6">
+            <td valign="top" colspan="7">
                 <div class="container">
-                <img src="./image/BetaBanner.png" height="215" width="1280">
+                <img src="./image/Banner.png" height="215" width="1280">
                 <div class="overlay">             
                 <br><br>
                 <table align=right>

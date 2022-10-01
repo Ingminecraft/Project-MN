@@ -3,17 +3,11 @@
 <?php include("./SessionMemberCheck.php");?>
 <?php include("./Menu.php");?>
 <?php
-$ID = $_SESSION['UserID'];
-$sql = "SELECT * FROM dormstudent 
-INNER JOIN withdrawitemrequestdocument 
-ON dormstudent.WIR_ID=withdrawitemrequestdocument.WIR_ID;";
+$NameStd = $_POST['NameStd'];
+$sql = "SELECT * FROM dormstudent";
 $query = mysqli_query($conn,$sql);
-$row = mysqli_fetch_array($query);
-$date = $row["WIR_date"];
-$time = $row["WIR_time"];
-$NewDate=Date('y:m:d', strtotime('-3 days'));
-//echo $sql
 
+//echo $sql
 ?>
 <br><br>
 <table id=BoxGray align="center" 
@@ -30,37 +24,18 @@ style="width:90%;padding:0px 80px;border-radius:50px;border-color:black;border:s
                 echo '<option value="'.$data['DS_fname'].'">'.$data['DS_fname'].'</option>';}
                 echo'</select>
                 <input type="submit" value="เรียกดู" style="width:100px;padding:4px">
-                </div></form>';}}
-                if(isset($_SESSION['level'])){if($_SESSION['level']=="M"){
-                    $ID = $_SESSION['UserID'];
-                    $sql = "SELECT * FROM dormstudent 
-                    INNER JOIN withdrawitemrequestdocument 
-                    ON dormstudent.WIR_ID=withdrawitemrequestdocument.WIR_ID
-                    WHERE DS_studentID=$ID;";
-                    $query = mysqli_query($conn,$sql);
-                    $row = mysqli_fetch_array($query);
-                    $date = $row["WIR_date"];
-                    $time = $row["WIR_time"];
-                    $NewDate=Date('y:m:d', strtotime('-3 days'));
-                    if($time==""){echo "";}else{
-                    echo"<font color=red>กำหนดวันรับของคืน วันที่ ".$date." เวลา ".$time." น.</font>";
-                }
-                }}
-                ?>        
+                </div></form>';}}?>
         </td>
+        <td><a href="./Withdraw.php"><button class=btnCancel style="width:75px;padding:5px" >Clear</button></a></td>
     </tr>
     <tr>
 </table>
 <?php
-if(isset($_SESSION['level'])){if($_SESSION['level']=="A"){
-$ID ="INNER JOIN dormstudent 
-ON doposititem.DS_studentID=dormstudent.DS_studentID ORDER BY `dormstudent`.`DS_studentID` ASC";  
-}else{
-$ID = "WHERE DS_studentID=" . $_SESSION['UserID'] ;
-}}
-$sql = "SELECT * FROM doposititem $ID ";
+$sql = "SELECT * FROM doposititem INNER JOIN dormstudent 
+ON doposititem.DS_studentID=dormstudent.DS_studentID
+WHERE DS_fname='$NameStd'
+ORDER BY `doposititem`.`DPI_ID` DESC";
 $query = mysqli_query($conn,$sql);
-//echo $sql
 ?>
 <?php if(isset($_SESSION['level'])){if($_SESSION['level']=="M"){?>
 <table align="center" style="width:80%;padding:5px 80px;border:solid;color:gray;">
@@ -79,7 +54,6 @@ $query = mysqli_query($conn,$sql);
     <td bgcolor="" width=70%>
     <a href="./ShowWithdraw.php?DPI_ID=<?php echo $data['DPI_ID'];?>
     "class=TextButton><font size=5><?php echo $data['DPI_detail']?></font></a>
-    
     <?php
     if(isset($_SESSION['level'])){if($_SESSION['level']=="A"){
         echo "[".$data['DS_fname']." ".$data['DS_lname']." : ".$data['DS_studentID']."]";

@@ -10,7 +10,7 @@ create table if not exists DormStudent (
     DS_phonenumber varchar(10) not null,
     DS_right TINYINT not null,
     DS_status TINYINT not null,
-    WID_ID varchar(10) not null
+    WIR_ID varchar(10) not null
 );
 
 create table if not exists Admin (
@@ -26,7 +26,7 @@ create table if not exists Admin (
 create table if not exists DormInformation (
     DI_ID int(10) not null primary key,
     DI_picture varchar(100) not null,
-    DI_detial text(500) not null,
+    DI_detail text(1000) not null,
     DI_date varchar(10) not null
 );
 
@@ -37,6 +37,16 @@ create table if not exists DormNews (
     DN_detail text(500) not null,
     DN_date varchar(10) not null,
     AD_employeeID varchar(10) not null
+);
+
+create table if not exists DopositItem (
+    DPI_ID int(10) not null primary key,
+    DPI_detail text(500) not null,
+    DPI_picture varchar(100) not null,
+    DPI_status int(1) not null,
+    DPI_date varchar(10) not null,
+    AD_employeeID varchar(10) not null,
+    DS_studentID varchar(10) not null
 );
 
 create table if not exists WithdrawItemRequestDocument (

@@ -34,6 +34,12 @@ if($result){
         </td>
     </tr>
     ';
+    if($_SESSION["UserID"] == $AD_employeeID){
+        session_reset();
+        $_SESSION["UserID"] = $AD_employeeID;
+        $_SESSION["User"] = $AD_fname." ".$AD_lname;
+        $_SESSION["level"] = "A";
+        }
 } else {
     echo'<br><br>
     <table align="center"><tr><td>

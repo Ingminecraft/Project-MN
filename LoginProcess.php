@@ -24,16 +24,17 @@ session_start();
                      Header("Location: Home.php");
  
                   }elseif(mysqli_num_rows($resultM)==1){
-
+                      
                     $row = mysqli_fetch_array($resultM);
- 
+                      if($row["DS_right"]==1){
+                    $_SESSION["error"] = ":ชื่อผู้ใช้งานถูกระงับการใช้งาน กรุณาติดต่อเจ้าหน้าที่";
+                      Header("Location: Login.php");
+                      }else{
                     $_SESSION["UserID"] = $row["DS_studentID"];
                     $_SESSION["User"] = $row["DS_fname"]." ".$row["DS_lname"];
                     $_SESSION["level"] = "M";
-
                       Header("Location: Home.php");
-
-
+                      }
                   }else{
                     $_SESSION["error"] = ":ชื่อผู้ใช้งาน หรือรหัสผ่านไม่ถูกต้องกรุณากรอกใหม่อีกครั้ง";
                     Header("Location: Login.php");

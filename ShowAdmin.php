@@ -2,7 +2,7 @@
 <?php include("./Menu.php");?>
 <?php include("./SessionCheck.php");?>
 <?php include('./connection/connection.php');
-$sql = "SELECT * FROM admin";
+$sql = "SELECT * FROM admin WHERE AD_employeeID !=".$_SESSION["UserID"];
 $query = mysqli_query($conn,$sql);
 ?>
     <br>

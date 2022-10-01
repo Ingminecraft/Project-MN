@@ -46,7 +46,7 @@ $row = mysqli_fetch_array($query);
         <td></td>
         <td colspan="2">
         <input type="submit" name="submit" value="ยืนยัน"></form>
-        <button class=btnCancel onclick="history.back()">ยกเลิก</button>
+        <a href="./Home.php"><button class=btnCancel onclick="history.back()">ยกเลิก</button></a>
         </td>
     </tr>
 <table>

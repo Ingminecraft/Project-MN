@@ -8,8 +8,8 @@ $AD_employeeID = $_POST['AD_employeeID'];
 $AD_phonenumber = $_POST['AD_phonenumber'];
 $AD_username = $_POST['AD_username'];
 $CON_AD_password = $_POST['AD_password'];
-$sql="INSERT INTO `admin` (`AD_employeeID`, `AD_fname`, `AD_lname`, `AD_phonenumber`, `AD_username`, `AD_password`) 
-VALUES ('$AD_employeeID', '$AD_fname', '$AD_lname','$AD_phonenumber','$AD_username', '$CON_AD_password')";
+$sql="INSERT INTO `admin` (`AD_employeeID`, `AD_fname`, `AD_lname`, `AD_phonenumber`, `AD_username`, `AD_password`,`DI_ID`) 
+VALUES ('$AD_employeeID', '$AD_fname', '$AD_lname','$AD_phonenumber','$AD_username', '$CON_AD_password','0')";
 ?>
 
 <?php
