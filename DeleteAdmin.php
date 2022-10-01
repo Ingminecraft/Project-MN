@@ -1,9 +1,10 @@
 <?php include("./Header.php");?>
 <?php include("./Menu.php");?>
+<?php include("./SessionCheck.php");?>
 <?php include('./connection/connection.php');?>
 <?php 
-$ID_Admin = $_GET['ID_Admin'];
-$sql = "SELECT * FROM db_admin WHERE ID_Admin=$ID_Admin";
+$AD_employeeID = $_GET['AD_employeeID'];
+$sql = "SELECT * FROM admin WHERE AD_employeeID=$AD_employeeID";
 $query = mysqli_query($conn,$sql);
 // แยกข้อมูลเป็น ROW
 $row = mysqli_fetch_array($query);
@@ -20,22 +21,22 @@ $row = mysqli_fetch_array($query);
     </tr>
     <tr>
         <td align="right" bgcolor="">ชื่อ-นามสกุล :</td>
-        <td align="Left" bgcolor=""><?php echo $row["FN_Admin"]." ".$row["LN_Admin"];?></td>
+        <td align="Left" bgcolor=""><?php echo $row["AD_fname"]." ".$row["AD_lname"];?></td>
     </tr>
     <tr>
         <td align="right" bgcolor="">ชื่อผู้ใช้งาน :</td>
-        <td align="Left" bgcolor=""><?php echo $row["USERNAME_Admin"];?></td>
+        <td align="Left" bgcolor=""><?php echo $row["AD_username"];?></td>
     </tr>
     <tr>
         <td align="right" bgcolor="">ID :</td>
-        <td align="Left" bgcolor=""><?php echo $row["ID_Admin"];?></td>
+        <td align="Left" bgcolor=""><?php echo $row["AD_employeeID"];?></td>
     </tr>
     <tr>
         <td align="right" bgcolor="">เบอร์โทรศัพท์ :</td>
-        <td align="Left" bgcolor=""><?php echo $row["PHONE_Admin"];?></td>
+        <td align="Left" bgcolor=""><?php echo $row["AD_phonenumber"];?></td>
     </tr>
         <td colspan="2" align="Center"><br><br>
-        <a href="./processDelete.php?ID_Admin=<?php echo $ID_Admin;?>">
+        <a href="./processDelete.php?AD_employeeID=<?php echo $AD_employeeID;?>">
         <button class="btnOk">ยืนยัน</button>
         </a>
         </td>

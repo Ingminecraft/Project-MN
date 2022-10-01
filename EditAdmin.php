@@ -1,9 +1,10 @@
 <?php include("./Header.php");?>
 <?php include("./Menu.php");?>
+<?php include("./SessionCheck.php");?>
 <?php include('./connection/connection.php');?>
 <?php 
-$ID_Admin = $_GET['ID_Admin'];
-$sql = "SELECT * FROM db_admin WHERE ID_Admin=$ID_Admin";
+$AD_employeeID = $_GET['AD_employeeID'];
+$sql = "SELECT * FROM admin WHERE AD_employeeID=$AD_employeeID";
 $query = mysqli_query($conn,$sql);
 // แยกข้อมูลเป็น ROW
 $row = mysqli_fetch_array($query);
@@ -21,27 +22,27 @@ $row = mysqli_fetch_array($query);
     </tr>
     <tr>
         <td align="right" bgcolor="" width="210px">ชื่อจริง<scr id=CheckFristName></scr></td>
-        <td align="center" bgcolor=""><input type="text" name="FN_Admin" id="FristName" size="25" maxlength="50" required
-        value=<?php echo $row["FN_Admin"];?>></td>
+        <td align="center" bgcolor=""><input type="text" name="AD_fname" id="FristName" size="25" maxlength="50" required
+        value=<?php echo $row["AD_fname"];?>></td>
     </tr>
     <tr>
         <td align="right" bgcolor="" width="210px">นามสกุล<scr id=CheckLastName></scr></td>
-        <td align="center" bgcolor=""><input type="text" name="LN_Admin" id="LastName" size="25" maxlength="50" required
-        value=<?php echo $row["LN_Admin"];?>></td>
+        <td align="center" bgcolor=""><input type="text" name="AD_lname" id="LastName" size="25" maxlength="50" required
+        value=<?php echo $row["AD_lname"];?>></td>
     </tr>
     <tr>
-        <td align="right" bgcolor="" width="210px">ID <font color="red">(ไม่สามารถแก้ไขได้ภายหลัง)</font>
+        <td align="right" bgcolor="" width="210px">ID <font color="red">(ไม่สามารถแก้ไข)</font>
         <scr id="CheckID"></scr></td>
-        <td align="center" bgcolor=""><input type="text" name="ID_Admin" id="ID_Admin" size="25" maxlength="8" 
+        <td align="center" bgcolor=""><input type="text" name="AD_employeeID" id="AD_employeeID" size="25" maxlength="8" 
         pattern="([0-9]+)" title="ต้องเป็นตัวเลขเท่านั้น"
         placeholder="ระบบจะสร้าง ID อัตโนมัตติ" readonly
-        value=<?php echo $row["ID_Admin"];?>></td>
+        value=<?php echo $row["AD_employeeID"];?>></td>
     </tr>
     <tr>
         <td align="right" bgcolor="" width="210px">เบอร์โทรศัพท์<scr id="CheckPhone"></scr></td>
-        <td align="center" bgcolor=""><input type="text" name="PHONE_Admin" id="PHONE_Admin" size="25" maxlength="10" 
+        <td align="center" bgcolor=""><input type="text" name="AD_phonenumber" id="AD_phonenumber" size="25" maxlength="10" 
         pattern="(?=.*[0-9]).{10,}" title="กรุณากรอกเบอร์โทร" required
-        value=<?php echo $row["PHONE_Admin"];?>></td>
+        value=<?php echo $row["AD_phonenumber"];?>></td>
     </tr>
     <tr>
         <td align="center" bgcolor="" colspan="2">
@@ -49,23 +50,23 @@ $row = mysqli_fetch_array($query);
         </td>
       <tr>
         <td align="right" bgcolor="" width="210px">ชื่อผู้ใช้งาน<scr id="CheckUsername"></scr></td>
-        <td align="center" bgcolor=""><input type="text" id="Username" name="USERNAME_Admin" size="25" maxlength="20"
+        <td align="center" bgcolor=""><input type="text" id="Username" name="AD_username" size="25" maxlength="20"
         title="กรุณากรอกชื่อผู้ใช้งาน" required
-        value=<?php echo $row["USERNAME_Admin"];?>></td>
+        value=<?php echo $row["AD_username"];?>></td>
     </tr>
     <tr>
         <td align="right" bgcolor="" width="210px">รหัสผ่าน<scr id="AllCheckPass"></scr></td>
-        <td align="center" bgcolor=""><input type="password" id="password" name="PASS_Admin" size="25"
+        <td align="center" bgcolor=""><input type="password" id="password" name="AD_password" size="25"
         pattern="(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}" 
         title="รหัสต้องมีตัวอักษรอย่างน้อย 8 ตัว ประกอบไปด้วย A-Z, a-z และ 0-9 " required
-        value=<?php echo $row["PASS_Admin"];?>></td>
+        value=<?php echo $row["AD_password"];?>></td>
     </tr>
     <tr>
         <td align="right" bgcolor="" width="210px">ยืนยันรหัสผ่าน<scr id="CheckPass"></scr></td>
-        <td align="center" bgcolor=""><input type="password" id="con_password" name="CON_PASS_Admin" size="25"
+        <td align="center" bgcolor=""><input type="password" id="con_password" name="CON_AD_password" size="25"
         pattern="(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}" 
         title="รหัสต้องมีตัวอักษรอย่างน้อย 8 ตัว ประกอบไปด้วย A-Z, a-z และ 0-9 " required
-        value=<?php echo $row["PASS_Admin"];?>></td></td> 
+        value=<?php echo $row["AD_password"];?>></td></td> 
     </tr>
     <tr>
         <td align="right" bgcolor="" width="210px"></td>
@@ -118,7 +119,7 @@ function CheckPassword(){
 password.onchange = CheckPassword;
 confirm_password.onkeyup = CheckPassword;
 //เช็คเบอร์โทร
-    var phone = document.getElementById("PHONE_Admin");
+    var phone = document.getElementById("AD_phonenumber");
 function CheckPhone(){ 
   if(phone.value.length < 10 || phone.value.match(OnlyNumbers)) {
     document.getElementById("CheckPhone").innerHTML = "<font color=red> *</font>";
@@ -132,7 +133,7 @@ phone.onchange = CheckPhone;
 phone.onkeyup = CheckPhone;
 
 //เช็คไอดี
-    var AdminID =  document.getElementById("ID_Admin");
+    var AdminID =  document.getElementById("AD_employeeID");
 function CheckID(){ 
   if(AdminID.value.match(OnlyNumbers)) {
     document.getElementById("CheckID").innerHTML = "<font color=red> *</font>";

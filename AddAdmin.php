@@ -1,6 +1,14 @@
 <?php include("./Header.php");?>
 <?php include("./Menu.php");?>
+<?php include("./SessionCheck.php");?>
+<?php include('./connection/connection.php');?>
 <form action="./process.php" method="post">
+<?php 
+$sql = "SELECT MAX(AD_employeeID) as MAX_AD_employeeID FROM admin;";
+$query = mysqli_query($conn,$sql);
+$data = mysqli_fetch_assoc($query);
+$MAX = $data['MAX_AD_employeeID'] + 1;
+?>
 <br><br><br>
 <table id=BoxGray align="center">
     <tr>
@@ -12,22 +20,23 @@
     </tr>
     <tr>
         <td align="right" bgcolor="" width="210px">ชื่อจริง<scr id=CheckFristName></scr></td>
-        <td align="center" bgcolor=""><input type="text" name="FN_Admin" id="FristName" size="25" maxlength="50" required></td>
+        <td align="center" bgcolor=""><input type="text" name="AD_fname" id="FristName" size="25" maxlength="50" required></td>
     </tr>
     <tr>
         <td align="right" bgcolor="" width="210px">นามสกุล<scr id=CheckLastName></scr></td>
-        <td align="center" bgcolor=""><input type="text" name="LN_Admin" id="LastName" size="25" maxlength="50" required></td>
+        <td align="center" bgcolor=""><input type="text" name="AD_lname" id="LastName" size="25" maxlength="50" required></td>
     </tr>
     <tr>
         <td align="right" bgcolor="" width="210px">ID <font color="red">(ไม่สามารถแก้ไขได้ภายหลัง)</font>
         <scr id="CheckID"></scr></td>
-        <td align="center" bgcolor=""><input type="text" name="ID_Admin" id="ID_Admin" size="25" maxlength="8" 
+        <td align="center" bgcolor=""><input type="text" name="AD_employeeID" id="AD_employeeID" size="25" maxlength="8" 
         pattern="([0-9]+)" title="ต้องเป็นตัวเลขเท่านั้น"
-        placeholder="ระบบจะสร้าง ID อัตโนมัตติ"></td>
+        placeholder="ระบบจะสร้าง ID อัตโนมัตติ" 
+        Value="<?php echo $MAX?>"></td>
     </tr>
     <tr>
         <td align="right" bgcolor="" width="210px">เบอร์โทรศัพท์<scr id="CheckPhone"></scr></td>
-        <td align="center" bgcolor=""><input type="text" name="PHONE_Admin" id="PHONE_Admin" size="25" maxlength="10" 
+        <td align="center" bgcolor=""><input type="text" name="AD_phonenumber" id="AD_phonenumber" size="25" maxlength="10" 
         pattern="(?=.*[0-9]).{10,}" title="กรุณากรอกเบอร์โทร"
         required></td>
     </tr>
@@ -37,18 +46,18 @@
         </td>
       <tr>
         <td align="right" bgcolor="" width="210px">ชื่อผู้ใช้งาน<scr id="CheckUsername"></scr></td>
-        <td align="center" bgcolor=""><input type="text" id="Username" name="USERNAME_Admin" size="25" maxlength="20"
+        <td align="center" bgcolor=""><input type="text" id="Username" name="AD_username" size="25" maxlength="20"
         title="กรุณากรอกชื่อผู้ใช้งาน" required></td>
     </tr>
     <tr>
         <td align="right" bgcolor="" width="210px">รหัสผ่าน<scr id="AllCheckPass"></scr></td>
-        <td align="center" bgcolor=""><input type="password" id="password" name="PASS_Admin" size="25"
+        <td align="center" bgcolor=""><input type="password" id="password" name="AD_password" size="25"
         pattern="(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}" 
         title="รหัสต้องมีตัวอักษรอย่างน้อย 8 ตัว ประกอบไปด้วย A-Z, a-z และ 0-9 " required></td>
     </tr>
     <tr>
         <td align="right" bgcolor="" width="210px">ยืนยันรหัสผ่าน<scr id="CheckPass"></scr></td>
-        <td align="center" bgcolor=""><input type="password" id="con_password" name="CON_PASS_Admin" size="25"
+        <td align="center" bgcolor=""><input type="password" id="con_password" name="CON_AD_password" size="25"
         pattern="(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}" 
         title="รหัสต้องมีตัวอักษรอย่างน้อย 8 ตัว ประกอบไปด้วย A-Z, a-z และ 0-9 " required></td></td> 
     </tr>
@@ -103,7 +112,7 @@ function CheckPassword(){
 password.onchange = CheckPassword;
 confirm_password.onkeyup = CheckPassword;
 //เช็คเบอร์โทร
-    var phone = document.getElementById("PHONE_Admin");
+    var phone = document.getElementById("AD_phonenumber");
 function CheckPhone(){ 
   if(phone.value.length < 10 || phone.value.match(OnlyNumbers)) {
     document.getElementById("CheckPhone").innerHTML = "<font color=red> *</font>";
@@ -117,7 +126,7 @@ phone.onchange = CheckPhone;
 phone.onkeyup = CheckPhone;
 
 //เช็คไอดี
-    var AdminID =  document.getElementById("ID_Admin");
+    var AdminID =  document.getElementById("AD_employeeID");
 function CheckID(){ 
   if(AdminID.value.match(OnlyNumbers)) {
     document.getElementById("CheckID").innerHTML = "<font color=red> *</font>";

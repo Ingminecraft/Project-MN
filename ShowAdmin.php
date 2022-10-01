@@ -1,7 +1,8 @@
 <?php include("./Header.php");?>
 <?php include("./Menu.php");?>
+<?php include("./SessionCheck.php");?>
 <?php include('./connection/connection.php');
-$sql = "SELECT * FROM db_admin";
+$sql = "SELECT * FROM admin WHERE AD_employeeID !=".$_SESSION["UserID"];
 $query = mysqli_query($conn,$sql);
 ?>
     <br>
@@ -19,10 +20,10 @@ $query = mysqli_query($conn,$sql);
         <tr>
             <td>
     <font size ="" color = "white">
-<?php echo $data['ID_Admin'] ." : ".$data['FN_Admin']." ".$data['LN_Admin']?>
+<?php echo $data['AD_employeeID'] ." : ".$data['AD_fname']." ".$data['AD_lname']?>
 </td><td align="right">
-        <a href="./EditAdmin.php?ID_Admin=<?php echo $data['ID_Admin'];?>">
-        <button class="btnEdit"><i class="fa fa-edit"></i></button></a><a href="./DeleteAdmin.php?ID_Admin=<?php echo $data['ID_Admin'];?>"><button class="btnDelete"><i class="fa fa-trash"></i></button></a>
+        <a href="./EditAdmin.php?AD_employeeID=<?php echo $data['AD_employeeID'];?>">
+        <button class="btnEdit"><i class="fa fa-edit"></i></button></a><a href="./DeleteAdmin.php?AD_employeeID=<?php echo $data['AD_employeeID'];?>"><button class="btnDelete"><i class="fa fa-trash"></i></button></a>
     </font>
 </tr>
     </table>

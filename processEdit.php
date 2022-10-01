@@ -2,19 +2,19 @@
 <?php include("./Header.php");?>
 <?php include("./Menu.php");?>
 <?php
-$FN_Admin = $_POST['FN_Admin'];
-$LN_Admin = $_POST['LN_Admin'];
-$ID_Admin = $_POST['ID_Admin'];
-$PHONE_Admin = $_POST['PHONE_Admin'];
-$USERNAME_Admin = $_POST['USERNAME_Admin'];
-$CON_PASS_Admin = $_POST['PASS_Admin'];
-$sql = "UPDATE db_admin SET 
-FN_Admin = '$FN_Admin',
-LN_Admin = '$LN_Admin',
-PHONE_Admin = '$PHONE_Admin',
-USERNAME_Admin='$USERNAME_Admin',
-PASS_Admin = '$CON_PASS_Admin'
-WHERE ID_Admin = $ID_Admin";
+$AD_fname = $_POST['AD_fname'];
+$AD_lname = $_POST['AD_lname'];
+$AD_employeeID = $_POST['AD_employeeID'];
+$AD_phonenumber = $_POST['AD_phonenumber'];
+$AD_username = $_POST['AD_username'];
+$CON_AD_password = $_POST['AD_password'];
+$sql = "UPDATE admin SET 
+AD_fname = '$AD_fname',
+AD_lname = '$AD_lname',
+AD_phonenumber = '$AD_phonenumber',
+AD_username='$AD_username',
+AD_password = '$CON_AD_password'
+WHERE AD_employeeID = $AD_employeeID";
 ?>
 
 <?php
@@ -25,15 +25,21 @@ if($result){
     echo'<br><br>
     <table align="center"><tr><td>
         <font size ="+20" color = "black" >
-        แก้ไขผู้ดูแลระบบเส็รจสิ้น<br><br>
+        แก้ไขผู้ดูแลระบบเสร็จสิ้น<br><br>
         </font>
         </td></tr></tr><td align="center">
         <a href="./ShowAdmin.php">
-        <meta http-equiv="refresh" content="3; url=./ShowAdmin.php">
-        </a>
+        <meta http-equiv="refresh" content="3; url=./ShowAdmin.php"></a>
+กำลังคุณกลับไปหน้าแสดงรายชื่อผู้ดูแลระบบ
         </td>
     </tr>
     ';
+    if($_SESSION["UserID"] == $AD_employeeID){
+        session_reset();
+        $_SESSION["UserID"] = $AD_employeeID;
+        $_SESSION["User"] = $AD_fname." ".$AD_lname;
+        $_SESSION["level"] = "A";
+        }
 } else {
     echo'<br><br>
     <table align="center"><tr><td>
@@ -42,8 +48,8 @@ if($result){
         </font>
         </td></tr></tr><td align="center">
         <a href="./ShowAdmin.php">
-        <meta http-equiv="refresh" content="3; url=./ShowAdmin.php">
-        </a>
+        <meta http-equiv="refresh" content="3; url=./ShowAdmin.php"></a>
+กำลังคุณกลับไปหน้าแสดงรายชื่อผู้ดูแลระบบ
         </td>
     </tr>
     ';

@@ -2,8 +2,8 @@
 <?php include("./Header.php");?>
 <?php include("./Menu.php");?>
 <?php
-$ID_Admin = $_GET["ID_Admin"];
-$sql="DELETE FROM db_admin WHERE ID_Admin = $ID_Admin";
+$AD_employeeID = $_GET["AD_employeeID"];
+$sql="DELETE FROM admin WHERE AD_employeeID = $AD_employeeID";
 $result = mysqli_query($conn,$sql);
 if($result){
     echo'<br><br>
@@ -13,8 +13,8 @@ if($result){
         </font>
         </td></tr></tr><td align="center">
         <a href="./ShowAdmin.php">
-        <meta http-equiv="refresh" content="3; url=./ShowAdmin.php">
-        </a>
+        <meta http-equiv="refresh" content="3; url=./ShowAdmin.php"></a>
+กำลังคุณกลับไปหน้าแสดงรายชื่อผู้ดูแลระบบ
         </td>
     </tr>
     ';
@@ -26,8 +26,8 @@ if($result){
         </font>
         </td></tr></tr><td align="center">
         <a href="./ShowAdmin.php">
-        <meta http-equiv="refresh" content="3; url=./ShowAdmin.php">
-        </a>
+        <meta http-equiv="refresh" content="3; url=./ShowAdmin.php"></a>
+กำลังคุณกลับไปหน้าแสดงรายชื่อผู้ดูแลระบบ
         </td>
     </tr>
     ';
