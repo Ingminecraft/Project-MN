@@ -44,17 +44,6 @@ WHERE $NameStd WIR_date='$DateStd';";
 $query = mysqli_query($conn,$sql);
 //echo $sql
 ?>
-<?php if(isset($_SESSION['level'])){if($_SESSION['level']=="M"){?>
-<table align="center" style="width:80%;padding:5px 80px;border:solid;color:gray;">
-<tr>
-    <td>
-        <a href="./AddWithdraw.php" class=TextButton style="color:gray">
-            <font size=6>+ เพิ่มรายการของฝาก</font>
-        </a>
-    </td>
-</tr>
-</table>
-<?php }}?>
 <?php foreach($query as $data){ ?>
 <table align="center" style="width:80%;padding:10px 10px 10px 80px;border:solid;border-color:gray;table-layout:fixed;">
     <tr>

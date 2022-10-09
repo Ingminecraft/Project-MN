@@ -48,17 +48,6 @@ $WIR_date = $data['WIR_date'];
 $WIR_time = $data['WIR_time'];
 //echo $sql
 ?>
-<?php if(isset($_SESSION['level'])){if($_SESSION['level']=="M"){?>
-<table align="center" style="width:80%;padding:5px 80px;border:solid;color:gray;">
-<tr>
-    <td>
-        <a href="./AddWithdraw.php" class=TextButton style="color:gray">
-            <font size=6>+ เพิ่มรายการของฝาก</font>
-        </a>
-    </td>
-</tr>
-</table>
-<?php }}?>
 <?php foreach($query as $data){ ?>
 <table align="center" style="width:80%;padding:10px 10px 10px 80px;border:solid;border-color:gray;table-layout:fixed;">
     <tr>
@@ -66,7 +55,7 @@ $WIR_time = $data['WIR_time'];
     <a href="./ShowWithdraw.php?DPI_ID=<?php echo $data['DPI_ID'];?>
     "class=TextButton><font size=5><?php echo $data['DPI_detail']?></font></a>
     <?php
-    echo "[".$data['DS_fname']." ".$data['DS_lname']." : ". $WIR_date." ".$WIR_time."]";
+    echo "[".$data['DS_fname']." ".$data['DS_lname']."-".$data['WIR_date']."-".$data['WIR_time']."]";
     ?>
     </td>
     <td align ="Right" bgcolor=>
