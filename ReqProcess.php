@@ -23,7 +23,7 @@ $result = mysqli_query($conn,$sql);
 
 $sql="UPDATE `doposititem` SET 
 `DPI_status`= 1
-WHERE DS_studentID = $ID";
+WHERE DS_studentID = $ID AND `DPI_status`= 0";
 $query = mysqli_query($conn,$sql);
 //echo $sql;
 if($result){

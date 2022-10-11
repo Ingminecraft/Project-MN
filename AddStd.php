@@ -1,25 +1,20 @@
+<!-- UC-03 -->
 <?php include("./Header.php");?>
 <?php include("./Menu.php");?>
 <?php include('./connection/connection.php');?>
-<form action="./AddStdProcess.php" method="post">
-<?php 
-$sql = "SELECT DS_studentID FROM dormstudent;";
-$query = mysqli_query($conn,$sql);
-$data = mysqli_fetch_assoc($query);
-$MAX = $data['DS_studentID']
-?>
 
+<form action="./AddStdProcess.php" method="post">
 <br><br><br>
 <table align="center">
     <tr>
         <td align="center" colspan="2">
-        <font size ="+20" color = "black" >
+        <font size ="+20" color = "black">
         ลงทะเบียนเป็นนิสิตหอพัก<br><br>
         </font>
         </td>
     </tr>
     <tr>
-        <td align="right" bgcolor="" width="210px">รหัสนิสิต <font color="red"></font>
+        <td align="right" bgcolor="" width="210px">รหัสนิสิต
         <scr id="CheckID"></scr></td>
         <td align="center" bgcolor=""><input type="text" name="DS_studentID" id="DS_studentID" size="25" maxlength="8" 
         pattern="([0-9]+)" title="ต้องเป็นตัวเลขเท่านั้น" required></td>
@@ -75,8 +70,8 @@ $MAX = $data['DS_studentID']
         </td>
     </tr>
     <tr>
-        <td colspan="2" align="Center"><a href="./ShowAdmin.php">
-        <button class=btnCancel onclick="history.back()">ยกเลิก</button></a>
+        <td colspan="2" align="Center">
+        <button class=btnCancel onclick="history.back()">ยกเลิก</button>
         </td>
     </tr>
 </table>
@@ -158,20 +153,9 @@ function CheckLast_Name(){
 }
 Last_Name.onchange = CheckLast_Name;
 Last_Name.onkeyup = CheckLast_Name;
-//Username
-var User_name  =  document.getElementById("Username");
-function CheckUsername(){ 
-  if(User_name.value.length < 1) {
-    document.getElementById("CheckUsername").innerHTML = "<font color=red> *</font>";
-    document.getElementById("UsernameLastCheck").innerHTML = "<font color=red> กรุณากรอกชื่อผู้ใช้<br></font>";
-  } else {
-    document.getElementById("CheckUsername").innerHTML = "";
-    document.getElementById("UsernameLastCheck").innerHTML = "";
-  } 
-}
-User_name.onchange = CheckUsername;
-User_name.onkeyup = CheckUsername;
+
 //เช็ครหัสผ่าน
+var password = document.getElementById("password");
 function AllCheckPass(){ 
   var a = 0;
   if(password.value.match(LowCharacter)) {

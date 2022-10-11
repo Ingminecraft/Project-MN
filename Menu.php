@@ -191,6 +191,7 @@ input[type="file"]::file-selector-button {
 
 body{font-family: Kanit;}
 </style>
+<?php include("./CheckDate.php");?>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <tr>
     <!-- Home -->

@@ -19,11 +19,11 @@
     <td align=right><font size=5>ช่วงเวลา&nbsp;&nbsp;</font></td>
     <td style=padding:10px><font size=4>
 
-      <input type="radio" id="Moring" Name="Time" value="08:00:00" required>เช้า
+      <input type="radio" id="Moring" Name="Time" value="08:00:00" required>เช้า [8:00 น.]
       &nbsp;&nbsp;
-      <input type="radio" id="Noon" Name="Time" value="12:00:00">กลางวัน
+      <input type="radio" id="Noon" Name="Time" value="12:00:00">กลางวัน [12:00 น.]
       &nbsp;&nbsp;
-      <input type="radio" id="Evening" Name="Time" value="16:00:00">เย็น
+      <input type="radio" id="Evening" Name="Time" value="16:00:00">เย็น [16:00 น.]
       &nbsp;&nbsp;
 
       </font>

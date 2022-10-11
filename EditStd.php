@@ -92,7 +92,7 @@ $row = mysqli_fetch_array($query);
     </tr>
 </form>
     <tr>
-        <td colspan="2" align="Center"><a href="./Home.php">
+        <td colspan="2" align="Center"><a href="./ShowStd.php">
         <button class=btnCancel onclick="history.back()">ยกเลิก</button></a>
         </td>
     </tr>
