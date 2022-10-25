@@ -1,6 +1,6 @@
 <?php include("./Header.php");?>
 <?php include("./Menu.php");?>
-<?php include("./SessionCheck.php");?>
+<?php include("./SessionMemberCheck.php");?>
 <?php include('./connection/connection.php');?>
 
 <?php

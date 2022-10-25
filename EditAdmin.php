@@ -81,6 +81,10 @@ $row = mysqli_fetch_array($query);
         <scr id = UsernameLastCheck></scr>
         <scr id = PassLastCheck></scr>
         <scr id = ConPassLastCheck></scr>
+        <?php if(isset($_SESSION['error'])){
+                echo $_SESSION['error'];
+                unset($_SESSION['error']);
+            }?>
         </td>
     </tr>
     <tr>

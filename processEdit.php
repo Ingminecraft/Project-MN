@@ -8,6 +8,12 @@ $AD_employeeID = $_POST['AD_employeeID'];
 $AD_phonenumber = $_POST['AD_phonenumber'];
 $AD_username = $_POST['AD_username'];
 $CON_AD_password = $_POST['AD_password'];
+$sql="SELECT * FROM admin Where AD_username='$AD_username'";
+$result=mysqli_query($conn,$sql);
+if(mysqli_num_rows($result)==1){
+    $_SESSION["error"] = "<font color=red>ชื่อผู้ใช้งานมีการใช้ไปแล้ว</font>";
+    echo "<meta http-equiv = 'refresh' content = '0; url = EditAdmin.php?AD_employeeID=".$_SESSION["UserID"]."' />";
+}else{
 $sql = "UPDATE admin SET 
 AD_fname = '$AD_fname',
 AD_lname = '$AD_lname',
@@ -29,7 +35,7 @@ if($result){
         </font>
         </td></tr></tr><td align="center">
         <a href="./ShowAdmin.php">
-        <meta http-equiv="refresh" content="3; url=./ShowAdmin.php"></a>
+        <meta http-equiv="refresh" content="300; url=./ShowAdmin.php"></a>
 กำลังคุณกลับไปหน้าแสดงรายชื่อผู้ดูแลระบบ
         </td>
     </tr>
@@ -48,12 +54,12 @@ if($result){
         </font>
         </td></tr></tr><td align="center">
         <a href="./ShowAdmin.php">
-        <meta http-equiv="refresh" content="3; url=./ShowAdmin.php"></a>
+        <meta http-equiv="refresh" content="300; url=./ShowAdmin.php"></a>
 กำลังคุณกลับไปหน้าแสดงรายชื่อผู้ดูแลระบบ
         </td>
     </tr>
     ';
-}
+}}
 //<button class="btnCancel">ตกลง</button>
 ?>
 <?php include("./Footer.php");?>  

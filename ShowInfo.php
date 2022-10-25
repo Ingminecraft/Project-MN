@@ -4,6 +4,8 @@
 <?php
 $sql = "SELECT * FROM dorminformation";
 $query = mysqli_query($conn,$sql);
+$row = mysqli_fetch_array($query);
+$date = date("m/d/Y",strtotime("+543 Years",strtotime($row['DI_date'])))
 ?>
     <br>
     <font size ="+20" color = "black">
@@ -19,7 +21,7 @@ $query = mysqli_query($conn,$sql);
         <td valign=top><br><br>
             <font size='6'>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <?php echo "ฉบับวันที่ ".$data['DI_date']?>
+                <?php echo "ฉบับวันที่ ".$date ?>
 
         </td>
         <td valign=top align=right>

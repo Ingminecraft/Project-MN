@@ -1,6 +1,6 @@
 <?php include("./Header.php");?>
 <?php include("./Menu.php");?>
-<table colspan="6" align ="center">
+<table align ="center">
     <br><br>
     <tr>
         <td colspan="2" align ="center">
@@ -40,9 +40,6 @@
             }?>
         </font>
     </tr>
-</tr>
-</tr>
-</tr>
 </table>
 
 <?php include("./Footer.php");?>

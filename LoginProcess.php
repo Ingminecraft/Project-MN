@@ -41,9 +41,6 @@ session_start();
                   }
  
         }else{
- 
- 
-             Header("Location: Login.php"); //user & password incorrect back to login again
- 
+             Header("Location: Login.php");
         }
 ?>

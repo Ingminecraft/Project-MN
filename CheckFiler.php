@@ -55,7 +55,7 @@ $query = mysqli_query($conn,$sql);
     ?>
     </td>
     <td align ="Right" bgcolor=>
-    <form action="./CheckProcess.php?=<?php echo $data['DPI_ID'];?>" method="post">
+    <form action="./CheckProcess.php?DPI_ID=<?php echo $data['DPI_ID'];?>" method="post">
     <?php if($data["DPI_status"]==0){echo '     
       <input type="radio" id="IN" Name="'.$data["DPI_ID"].'" value="0" required checked>อยู่ในคลัง
       &nbsp;&nbsp;
