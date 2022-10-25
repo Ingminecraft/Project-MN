@@ -90,11 +90,12 @@ $query = mysqli_query($conn,$sql);
     <?php if($data["DPI_status"]==0){echo "<font color=red>█</font> สถานะอยู่ในคลัง";} ?>
     <?php if($data["DPI_status"]==1){echo "<font color=orange>█</font> สถานะรอรับคืน";} ?>
     <?php if($data["DPI_status"]==2){echo "<font color=green>█</font> สถานะรับคืนแล้ว";} ?>
+    <?php if($data["DPI_status"]!=2){ ?>
     <a href="./EditWithdraw.php?DPI_ID=<?php echo $data['DPI_ID'];?>">
     <button class=btnWhite><i class="fa fa-edit fa-2x"></i></button></a>
-
     <a href="./DeleteWithdraw.php?DPI_ID=<?php echo $data['DPI_ID'];?>">
     <button class=btnWhiteD><i class="fa fa-trash fa-2x"></i></button></a>
+    <?php } ?>
     
     </td>
     </tr>
