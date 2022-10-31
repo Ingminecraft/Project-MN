@@ -8,10 +8,18 @@ $AD_employeeID = $_POST['AD_employeeID'];
 $AD_phonenumber = $_POST['AD_phonenumber'];
 $AD_username = $_POST['AD_username'];
 $CON_AD_password = $_POST['AD_password'];
+
+//เขียน SQL หาข้อมูลซื่อซ้ำ
 $sql="SELECT * FROM admin Where AD_username='$AD_username'";
+
+//ส่ง result ไป phpmyadmin
 $result=mysqli_query($conn,$sql);
+
+//ถ้า มีข้อมูลขึ้นมา = 1 แถว
 if(mysqli_num_rows($result)==1){
+    //ให้ส่ง Session ว่า ชื่อผู้ใช้งานมีการใช้ไปแล้ว เป็นตัวอักษรสีแดง
     $_SESSION["error"] = "<font color=red>ชื่อผู้ใช้งานมีการใช้ไปแล้ว</font>";
+    //เป็นคำสังกับไปยังหน้า Edit ข้อมูลส่วนตัว
     echo "<meta http-equiv = 'refresh' content = '0; url = EditAdmin.php?AD_employeeID=".$_SESSION["UserID"]."' />";
 }else{
 $sql = "UPDATE admin SET 

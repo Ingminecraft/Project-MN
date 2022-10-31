@@ -74,6 +74,12 @@ $MAX = $data['MAX_AD_employeeID'] + 1;
         <scr id = UsernameLastCheck></scr>
         <scr id = PassLastCheck></scr>
         <scr id = ConPassLastCheck></scr>
+        <!-- ถ้ามี Session ส่งมา ให้แสดงค่าที่ส่งมา -->
+        <?php if(isset($_SESSION['error'])){
+                echo $_SESSION['error'];
+                // เมื่อส่งค่ามาแสดงแล้วให้ลบทิ้ง
+                unset($_SESSION['error']);
+            }?>
         </td>
     </tr>
     <tr>
